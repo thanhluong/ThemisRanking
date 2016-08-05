@@ -127,6 +127,7 @@
 		global $Content;
 		global $Problem;
 		$Content .= "<tr>";
+		$Content .= "<td><center><b>Vị thứ</b></center></td>";
 		$Content .= "<td><center><b>Thí sinh</b></center></td>";
 		foreach($Problem as $Name){
 			$Content .= "<td><center><b>" . $Name . "</b></center></td>";
@@ -139,8 +140,18 @@
 		global $Student;
 		global $Problem;
 		global $StudentSum;
+		$Pos = 0;
+		$Count = 0;
+		$Prev = "-1";
 		foreach($StudentSum as $Name=>$SumScore){
+			$Count++;
+			if($SumScore != $Prev){
+				$Pos = $Count;
+				$Prev = $SumScore;
+			}
+			//Update pos
 			$Content .= "<tr>";//Create new line
+			$Content .= "<td><center><b>" . $Pos . "<b></center></td>";
 			$Content .= "<td><b>" . $Name . "</b></td>";
 			for($i = 0; $i < count($Problem); $i++){
 				$TaskName = $Problem[$i];
